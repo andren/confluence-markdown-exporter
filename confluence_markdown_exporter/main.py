@@ -37,8 +37,8 @@ def pages(
     from confluence_markdown_exporter.confluence import Page  # noqa: PLC0415 lacy load
 
     with measure(f"Export pages {', '.join(pages)}"):
+        override_output_path_config(output_path)
         for page in pages:
-            override_output_path_config(output_path)
             _page = Page.from_id(int(page)) if page.isdigit() else Page.from_url(page)
             _page.export()
 
@@ -56,8 +56,8 @@ def pages_with_descendants(
     from confluence_markdown_exporter.confluence import Page  # noqa: PLC0415 lacy load
 
     with measure(f"Export pages {', '.join(pages)} with descendants"):
+        override_output_path_config(output_path)
         for page in pages:
-            override_output_path_config(output_path)
             _page = Page.from_id(int(page)) if page.isdigit() else Page.from_url(page)
             _page.export_with_descendants()
 
@@ -75,8 +75,8 @@ def spaces(
     from confluence_markdown_exporter.confluence import Space  # noqa: PLC0415 lacy load
 
     with measure(f"Export spaces {', '.join(space_keys)}"):
+        override_output_path_config(output_path)
         for space_key in space_keys:
-            override_output_path_config(output_path)
             space = Space.from_key(space_key)
             space.export()
 
