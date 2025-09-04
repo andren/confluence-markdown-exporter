@@ -64,7 +64,7 @@ def sample_api_details() -> ApiDetails:
     """Create sample API details for testing."""
     return ApiDetails(
         url=AnyHttpUrl("https://test.atlassian.net/"),
-        username=SecretStr("test@example.com"),
+        username="test@example.com",
         api_token=SecretStr("test-token"),
         pat=SecretStr("test-pat"),
     )
